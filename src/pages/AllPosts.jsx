@@ -1,16 +1,49 @@
 import React, {useState, useEffect} from 'react'
 import { Container, PostCard } from '../components'
 import appwriteService from "../appwrite/config";
-
+import { useSelector } from 'react-redux'
 function AllPosts() {
     const [posts, setPosts] = useState([])
-    useEffect(() => {
-    appwriteService.getPosts([]).then((posts) => {
-        if (posts) {
-            setPosts(posts.documents)
+    const userData = useSelector((state) => state.auth.userData);
+
+//     useEffect(() => {
+//     appwriteService.getPosts([]).then((posts) => {
+//         if (posts) {
+//             setPosts(posts.documents)
+//         }
+//     })
+// }, [])
+
+useEffect(() => {
+      if (!userData) {
+        console.log('User data is not available yet.');
+        return;
+      }
+  
+      appwriteService.getPosts([]).then((post) => {
+        const postMap = new Map();
+
+        post.documents.forEach((post) => {
+            if (!postMap.has(post.userId)) {
+                postMap.set(post.userId, []);
+            }
+            postMap.get(post.userId).push(post);
+        });
+
+        const isAuthor = postMap.has(userData.$id);
+        if (isAuthor) {
+          setPosts(post.documents);
+        } else {
+          const activePosts = post.documents.filter((post) => post.status === 'active');
+          setPosts(activePosts);
         }
-    })
-}, [])
+      }).catch((error) => {
+        console.error('Error fetching posts:', error);
+      });
+    }, [userData]);
+
+
+ 
   return (
     <div className='py-8 w-full dark:bg-black'>
         <Container>

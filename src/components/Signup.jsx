@@ -26,7 +26,7 @@ function Signup() {
                 if(userData) dispatch(login({userData}));
                 if(!userData.emailVerification){
                     await authService.emailVerification();
-                    dispatch(errorMsg("Please verify your email address"));
+                    dispatch(errorMsg("Email has been send! Please verify your email address"));
                 }
                 navigate("/")
 
@@ -92,7 +92,7 @@ function Signup() {
                             } ,
                             validate: {
                                 matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                                "Email address must be a valid address",
+                                "Oops! Please enter a valid email address.",
                             }
                         })}
                         />

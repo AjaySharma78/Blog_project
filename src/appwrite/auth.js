@@ -23,7 +23,7 @@ export class AuthService {
                return  userAccount;
             }
         } catch (error) {
-            throw error;
+            throw new Error("A user with the same id or email already exists!");
         }
     }
 
@@ -35,6 +35,14 @@ export class AuthService {
         }
       } 
     
+ async verifyEmail(userId, secret) {
+    try {
+      return await this.account.updateVerification(userId, secret);
+    } catch (error) {
+      throw error;
+  }
+  }
+
 
      OAuthLogin() {
         try {
@@ -62,9 +70,9 @@ export class AuthService {
        
     async login({email, password}) {
         try {
-            return await this.account.createEmailSession(email, password);
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
-            throw error;
+            throw new Error("Invalid email or password");
         }
     }
 
