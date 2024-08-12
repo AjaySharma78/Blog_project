@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { darkTheme, lightTheme } from '../../store/authSlice'
+
 function Header() {
   const authStatus = useSelector((state) => state.auth.status)
   const themeMode = useSelector((state) => state.auth.theme);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch()
+ 
 
   const onChangeBtn = (e) => {
     const darkModeStatus = e.currentTarget.checked;
@@ -67,7 +69,7 @@ function Header() {
               item.active && (
                 <li className="ml-2 mr-2" key={item.name}>
                   <button
-                    className={` inline-block px-6 py-2 duration-200 hover:bg-orange-500 rounded-md text-lg dark:text-white ${location.pathname===item.link? 'bg-orange-400':''}`}
+                    className={` inline-block px-6 py-2 duration-200 hover:bg-orange-500 rounded-md text-lg dark:text-white  ${location.pathname===item.slug? 'bg-orange-400':''}`}
                     onClick={() => navigate(item.slug)}
                   >
                     {item.name}

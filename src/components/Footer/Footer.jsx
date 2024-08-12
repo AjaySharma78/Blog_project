@@ -14,7 +14,7 @@ function Footer() {
                               </div>
                               <div>
                                   <p className=" text-xs md:text-sm dark:text-white">
-                                      &copy; Copyright 2023. All Rights Reserved by PenCrafted.
+                                      &copy; Copyright 2023. All Rights Reserved by <Link to="/"><span className='text-orange-500'>PenCrafted.</span></Link>
                                   </p>
                               </div>
                           </div>
