@@ -4,15 +4,20 @@ import {Container, PostCard} from '../components'
 import {useSelector} from 'react-redux'
 import {error as errorMsg} from '../store/authSlice'
 import { useDispatch } from 'react-redux';
+
 function Home() {
     const [posts, setPosts] = useState([])
     const userData = useSelector((state) => state.auth.userData);
     const errorMessage = useSelector((state) => state.auth.error);
+    const [loading, setLoading] = useState(false);
     const dipatch = useDispatch();
     useEffect(() => {
+        setLoading(true);
         appwriteService.getPosts().then((posts) => {
             if (posts) {
+                setLoading(false);
                 setPosts(posts.documents)
+
             }
         })
     }, [])
@@ -26,13 +31,18 @@ function Home() {
   
     if (posts.length === 0) {
         return (
-            <div className="w-full py-8 mt-4 text-center dark:bg-black">
+            <div className="w-full h-screen py-8 mt-4 text-center dark:bg-black">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
-                            <h1 className="text-2xl font-bold ">
-                                Login to read posts
-                            </h1>
+                        {loading && (
+          <div className="w-full grid place-content-center mt-2">
+            <img
+              className="w-[30px]"
+              src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+            />{" "}
+          </div>
+        )}
                         </div>
                     </div>
                 </Container>
