@@ -83,12 +83,15 @@ function Footer() {
                                       </Link>
                                   </li>
                                   <li className="mb-4">
-                                      <Link
-                                          className=" text-base font-medium text-gray-900 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white"
-                                          to="/"
+                                  <NavLink
+                                          to="/contact"
+                                          className={({ isActive }) =>
+                                              `${
+                                                isActive ? "text-orange-500" : ''
+                                              } text-base font-medium text-gray-900 hover:text-gray-500 dark:text-gray-400 dark:hover:text-white`}
                                       >
                                           Contact Us
-                                      </Link>
+                                      </NavLink>
                                   </li>
                                   <li>
                                       <Link

@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback,useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "../index";
 import appwriteService from "../../appwrite/config";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PostForm({ post }) {
+    const [loading, setLoading] = useState(false)
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
@@ -19,7 +20,9 @@ export default function PostForm({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
+        
         if (post) {
+            setLoading(true)
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
@@ -34,7 +37,10 @@ export default function PostForm({ post }) {
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
-        } else {
+            setLoading(false)
+        } else { 
+            setLoading(true)
+
             const file = await appwriteService.uploadFile(data.image[0]);
 
             if (file) {
@@ -46,6 +52,7 @@ export default function PostForm({ post }) {
                     navigate(`/post/${dbPost.$id}`);
                 }
             }
+            setLoading(false)
         }
     };
 
@@ -72,6 +79,14 @@ export default function PostForm({ post }) {
 
     return (
       <form onSubmit={handleSubmit(submit)} className="md:flex flex-wrap ">
+         {loading && (
+          <div className="w-full absolute bg-white h-screen flex items-start justify-center ">
+            <img
+              className="w-[30px]"
+              src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
+            />{" "}
+          </div>
+        )}
           <div className="md:w-2/3 px-2">
               <Input
                   label="Title :"
@@ -89,7 +104,7 @@ export default function PostForm({ post }) {
                   }}
               />
             
-              <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
+              <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")}/>
              
           </div>
           <div className=" w-full md:w-1/3 px-2 mt-7 md:mt-0">

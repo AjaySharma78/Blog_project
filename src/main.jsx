@@ -16,7 +16,7 @@ import Error from "./pages/Error";
 import Post from "./pages/Post";
 import TermsCondition from "./pages/TermsCondition";
 import AllPosts from "./pages/AllPosts";
-
+import Contact from './pages/Contact.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -80,6 +80,10 @@ const router = createBrowserRouter([
         {
 path: "/privacy-policy",
 element: <TermsCondition />,
+        },
+        {
+        path:"/contact",
+        element:<Contact/>
         },
 
         {
