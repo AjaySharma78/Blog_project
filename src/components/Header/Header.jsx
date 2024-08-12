@@ -69,7 +69,7 @@ function Header() {
               item.active && (
                 <li className="ml-2 mr-2" key={item.name}>
                   <button
-                    className={` inline-block px-6 py-2 duration-200 hover:bg-orange-500 rounded-md text-lg dark:text-white  ${location.pathname===item.slug? 'bg-orange-400':''}`}
+                    className={` inline-block px-6 py-2 mt-1 md:mt-0 duration-200 hover:bg-orange-500 rounded-md text-lg dark:text-white  ${location.pathname===item.slug? 'bg-orange-400':''}`}
                     onClick={() => navigate(item.slug)}
                   >
                     {item.name}
@@ -82,13 +82,13 @@ function Header() {
               <LogoutBtn/>
             </li>
           )}
-      <div className="sm:rotate-0 md:rotate-90 ml-8 my-2 md:mt-0 md:pr-0 ">
+      <div className="sm:rotate-0 md:rotate-90 ml-8 my-2  md:mt-0 md:pr-0 ">
         <label className="relative inline-flex items-center cursor-pointer ">
           <input
             type="checkbox"
             value=""
             label=""
-            className="sr-only peer"
+            className="sr-only peer "
             onChange={onChangeBtn}
             checked={themeMode === "dark"}
           />
