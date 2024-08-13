@@ -1,6 +1,5 @@
-import conf from '../env/config.js';
+import config from "../env/config";
 import { Client, Account, ID } from "appwrite";
-
 
 export class AuthService {
     client = new Client();
@@ -8,8 +7,8 @@ export class AuthService {
 
     constructor() {
         this.client
-            .setEndpoint(conf.appwriteUrl)
-            .setProject(conf.appwriteProjectId);
+            .setEndpoint(config.appwriteUrl)
+            .setProject(config.appwriteProjectId);
         this.account = new Account(this.client);
             
     }
@@ -29,7 +28,7 @@ export class AuthService {
 
     async emailVerification() {
         try {
-          return await this.account.createVerification('http://localhost:5173/verify-email');
+          return await this.account.createVerification(`${config.oauthEndpoint}/verify-email`);
         } catch (error) {
           throw error;
         }
@@ -48,8 +47,8 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'github',
-             'http://localhost:5173/',
-             'http://localhost:5173/signup',
+             config.oauthEndpoint,
+             `${config.oauthEndpoint}/signup`,
             );
         } catch (error) {
           throw error;
@@ -60,8 +59,8 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'google',
-             'http://localhost:5173/',
-             'http://localhost:5173/signup',
+            config.oauthEndpoint,
+            `${config.oauthEndpoint}/signup`,
             );
         } catch (error) {
           throw error;
