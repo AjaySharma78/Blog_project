@@ -1,6 +1,9 @@
 import config from "../env/config";
 import { Client, Account, ID } from "appwrite";
 
+
+console.log(config.oauthEndpoint);
+
 export class AuthService {
     client = new Client();
     account;
@@ -47,8 +50,8 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'github',
-             config.oauthEndpoint,
-             `${config.oauthEndpoint}/signup`,
+             'https://pencrafted.vercel.app',
+             `https://pencrafted.vercel.app/signup`,
             );
         } catch (error) {
           throw error;
@@ -59,8 +62,8 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'google',
-            config.oauthEndpoint,
-            `${config.oauthEndpoint}/signup`,
+            'https://pencrafted.vercel.app/',
+            `https://pencrafted.vercel.app/signup`,
             );
         } catch (error) {
           throw error;
