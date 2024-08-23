@@ -1,9 +1,6 @@
 import config from "../env/config";
 import { Client, Account, ID } from "appwrite";
 
-
-console.log(config.oauthEndpoint);
-
 export class AuthService {
     client = new Client();
     account;
