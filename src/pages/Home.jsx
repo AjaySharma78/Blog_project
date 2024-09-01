@@ -75,8 +75,8 @@ function Home() {
           </span>
         </div>
       )}
-      <div className="py-8 w-full dark:bg-black">
-        <Container >
+      <div className="py-4 md:py-8  w-full dark:bg-black">
+        <Container>
           <div className=" flex items-center justify-center rounded-xl ">
             <div className="px-4 py-2 dark:bg-gray-900 rounded-xl bg-black/10">
               <Carousel className="h-[15rem] md:h-[28rem] w-full rounded-xl" autoplay  >

@@ -6,7 +6,7 @@ function PostCard({$id, title, featuredImage}) {
   // console.log(appwriteService.getFilePreview(featuredImage));
   return (
     <Link to={`/post/${$id}`}>
-        <div className='w-full bg-black/10 rounded-xl p-4 dark:bg-gray-900 dark:text-white '>
+        <div className='w-full bg-black/10 rounded-xl p-2 md:p-4 dark:bg-gray-900 dark:text-white '>
             <div className='w-full justify-center mb-4'>
             <div style={{ backgroundImage:`url(${appwriteService.getFilePreview(featuredImage)})`, backgroundSize: "cover",
                 backgroundPosition: "center", 
