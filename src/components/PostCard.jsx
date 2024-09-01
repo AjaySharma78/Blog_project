@@ -16,7 +16,7 @@ function PostCard({$id, title, featuredImage}) {
                  
             </div>
             <div
-            className='w-full h-7 md:h-10 flex flex-wrap'
+            className='w-full h-8 md:h-10 flex flex-wrap'
             >
               
             <h2 className='text-sm md:text-lg'>{title}</h2>
