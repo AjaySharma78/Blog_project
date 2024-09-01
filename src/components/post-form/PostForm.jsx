@@ -80,7 +80,7 @@ export default function PostForm({ post }) {
     return (
       <form onSubmit={handleSubmit(submit)} className="md:flex flex-wrap ">
          {loading && (
-          <div className="w-full absolute bg-white h-screen flex items-start justify-center ">
+          <div className="w-full absolute bg-white dark:bg-black h-screen flex items-start justify-center ">
             <img
               className="w-[30px]"
               src="https://media.tenor.com/wpSo-8CrXqUAAAAi/loading-loading-forever.gif"
@@ -130,7 +130,7 @@ export default function PostForm({ post }) {
                   className="mb-4 rounded-sm md:rounded-lg"
                   {...register("status", { required: true })}
               />
-              {/* <SelectBtn
+              {/* <Select
                   options={["sport", "programming", "music", "lifestyle"]}
                   label="Category"
                   className="mb-4"

@@ -17,6 +17,7 @@ function Login() {
     const {errors} = formState;
     const [error, setError] = useState("")
     const [loading, setLoading] = useState(false);
+    
     const login = async(data) => {
         setError("")
         setLoading(true);
@@ -44,10 +45,10 @@ function Login() {
     <div
     className='flex items-center justify-center'
     >
-        <div className={`mx-auto w-11/12 md:w-full max-w-lg bg-gray-100 rounded-xl p-5 md:p-10 border border-black/10 dark:bg-stone-950 dark:border-white`}>
+        <div className={`mx-auto w-11/12 md:w-full max-w-lg bg-gray-100 rounded-xl p-5 md:p-10 border border-black/10 dark:bg-gray-900 dark:border-white`}>
         <div className="mb-2 flex justify-center items-center">
-        <span className=" flex justify-center w-full max-w-[100px]">
-            <Logo width="70px" />
+        <span className=" flex justify-center w-full max-w-[200px]">
+            <Logo width="200px" />
           </span>
         </div>
         <h2 className="text-center text-lg md:text-2xl font-bold leading-tight dark:text-white">Sign in to your account</h2>

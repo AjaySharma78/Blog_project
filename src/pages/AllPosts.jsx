@@ -7,14 +7,6 @@ function AllPosts() {
     const [loading, setLoading] = useState(false);
     const userData = useSelector((state) => state.auth.userData);
 
-//     useEffect(() => {
-//     appwriteService.getPosts([]).then((posts) => {
-//         if (posts) {
-//             setPosts(posts.documents)
-//         }
-//     })
-// }, [])
-
 useEffect(() => {
       if (!userData) {
         console.log('User data is not available yet.');

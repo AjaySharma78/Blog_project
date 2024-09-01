@@ -32,7 +32,7 @@ export default function Post() {
 
   return post ? (
     <div className="py-8 dark:bg-black">
-      <Container width="w-4/5 bg-slate-100 dark:bg-slate-800 p-5 rounded-xl ">
+      <Container width="w-11/12 bg-black/10 dark:bg-gray-900 p-5 rounded-xl ">
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <div className="w-full">
             <div

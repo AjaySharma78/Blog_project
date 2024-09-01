@@ -17,6 +17,7 @@ import Post from "./pages/Post";
 import TermsCondition from "./pages/TermsCondition";
 import AllPosts from "./pages/AllPosts";
 import Contact from './pages/Contact.jsx'
+import { ThemeProvider } from '@material-tailwind/react'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -96,8 +97,10 @@ element: <TermsCondition />,
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <ThemeProvider>
     <Provider store={store}>
     <RouterProvider router={router}/>
     </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
 )
