@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import Logo from "../Logo";
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
-import {LogoutBtn} from "../index";
+
 function Footer() {
   const authStatus = useSelector((state) => state.auth.status);
   const navigate = useNavigate()
@@ -42,9 +42,9 @@ function Footer() {
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
             <div className="flex h-full flex-col justify-between">
               <div className="mb-4 inline-flex items-center">
-                <Logo width="150px md:120px" />
+                <Logo width="100px " />
               </div>
-              <h2 className=" md:-mt-14  dark:text-white text-black">
+              <h2 className="  dark:text-white text-black">
                  Pencrafted is a online blog website <br/>
                  where users can write blog on there desire topic.<br/>
                  

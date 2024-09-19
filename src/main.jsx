@@ -5,19 +5,9 @@ import './index.css'
 import { Provider } from 'react-redux'
 import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Home from './pages/Home.jsx'
 import { AuthLayout} from './components/index.js'
-import Verify from './pages/Verify'
-import Login from './pages/Login'
-import AddPost from "./pages/AddPost";
-import Signup from './pages/Signup'
-import EditPost from "./pages/EditPost";
-import Error from "./pages/Error";
-import Post from "./pages/Post";
-import TermsCondition from "./pages/TermsCondition";
-import AllPosts from "./pages/AllPosts";
-import Contact from './pages/Contact.jsx'
 import { ThemeProvider } from '@material-tailwind/react'
+import { Home, Login, Signup, AllPosts, AddPost, EditPost, Post, Verify, TermsCondition, Contact, ResetPasswordMail, ResetPassword, Error } from './pages/index.js'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,14 +69,22 @@ const router = createBrowserRouter([
          element:<Verify/>
         },
         {
-path: "/privacy-policy",
-element: <TermsCondition />,
+        path: "/privacy-policy",
+        element: <TermsCondition />,
         },
         {
         path:"/contact",
         element:<Contact/>
         },
 
+         {
+         path:"/reset-password",
+            element:<ResetPasswordMail/>
+         },
+         {
+         path:"/reset-password-page",
+        element:<ResetPassword/>
+         },
         {
             path: "*",
             element:<Error/>

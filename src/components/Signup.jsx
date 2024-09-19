@@ -44,7 +44,7 @@ function Signup() {
             <div className={`mx-auto w-11/12 md:w-full max-w-lg bg-gray-100 rounded-xl p-5 md:p-10 border border-black/10 dark:bg-gray-900 dark:border-white`}>
             <div className="mb-2 flex justify-center">
                     <span className=" flex justify-center items-center w-full max-w-[200px]">
-                        <Logo width="200px" />
+                        <Logo width="70px" />
                     </span>
                 </div>
                 <h2 className="text-center text-xl font-bold leading-tight dark:text-white">Sign up to create account</h2>

@@ -1,9 +1,16 @@
 import React from 'react'
+import { useEffect } from 'react'
 import appwriteService from "../appwrite/config"
 import {Link} from 'react-router-dom'
 
-function PostCard({$id, title, featuredImage}) {
-  // console.log(appwriteService.getFilePreview(featuredImage));
+function PostCard({$id,$createdAt,$updatedAt, title, featuredImage}) {
+  const [formattedDate, setFormattedDate] = React.useState();
+
+  useEffect(() => {
+    const date = new Date($createdAt);
+    const formatted = date.toLocaleDateString();
+    setFormattedDate(formatted);
+  }, [$createdAt]);
   return (
     <Link to={`/post/${$id}`}>
         <div className='w-full bg-black/10 rounded-xl p-2 md:p-4 dark:bg-gray-900 dark:text-white '>
@@ -15,12 +22,10 @@ function PostCard({$id, title, featuredImage}) {
                 </div>
                  
             </div>
-            <div
-            className='w-full h-8 md:h-10 flex flex-wrap'
-            >
-              
-            <h2 className='text-sm md:text-lg'>{title}</h2>
-              </div>
+            <div className='w-full h-14 md:h-10 flex flex-wrap'> 
+            <h2 className='w-full text-sm md:text-lg'>{title}</h2>
+            <h6 className='text-[10px] md:text-xs'>Ceated At : {formattedDate}</h6>
+            </div>
         </div>
     </Link>
   )

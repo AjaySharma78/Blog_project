@@ -33,7 +33,7 @@ export class AuthService {
           throw error;
         }
       } 
-    
+
  async verifyEmail(userId, secret) {
     try {
       return await this.account.updateVerification(userId, secret);
@@ -42,6 +42,21 @@ export class AuthService {
   }
   }
 
+  async resetPassword(email) {
+    try {
+      return await this.account.createRecovery(email, `${config.oauthEndpoint}/reset-password-page`);
+    } catch (error) {
+      throw error;
+    }
+  }
+   
+  async updatePassword(userId, secret, password,confirmPassword) {
+    try {
+      return await this.account.updateRecovery(userId, secret, password, confirmPassword);
+    } catch (error) {
+      throw error;
+    }
+  }
 
      OAuthLogin() {
         try {

@@ -12,6 +12,8 @@ import PostForm from "./post-form/PostForm";
 import PostCard from "./PostCard";
 import AuthLayout from "./AuthLayout";
 import Input from "./Input";
+import CarouselComp from "./CarouselComp";
+import FramerMotion from "./FramerMotion";
 export {
     Header,
     Footer,
@@ -27,4 +29,6 @@ export {
     AuthLayout, 
     Input,
     Select,
+    CarouselComp,
+    FramerMotion
 }

@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import appwriteService from "../appwrite/config";
-import { Container, PostCard } from "../components";
+import { Container, PostCard,CarouselComp,FramerMotion } from "../components";
 import { useSelector } from "react-redux";
 import { error as errorMsg } from "../store/authSlice";
 import { useDispatch } from "react-redux";
-import { Carousel, Typography, Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Carousel} from "@material-tailwind/react";
+
 function Home() {
   const [posts, setPosts] = useState([]);
   const userData = useSelector((state) => state.auth.userData);
   const errorMessage = useSelector((state) => state.auth.error);
   const [loading, setLoading] = useState(false);
   const dipatch = useDispatch();
+
   useEffect(() => {
     setLoading(true);
     appwriteService.getPosts().then((post) => {
@@ -20,15 +21,13 @@ function Home() {
         setLoading(false);
       }
     });
-  }, []);
-  
+  },[]);
   const error = () => {
     dipatch(errorMsg(""));
   };
   setTimeout(() => {
     dipatch(errorMsg(""));
   }, 10000);
-
   if (posts.length === 0) {
     return (
       <div className="w-full h-screen py-8 mt-4 text-center dark:bg-black">
@@ -75,43 +74,13 @@ function Home() {
           </span>
         </div>
       )}
-      <div className="py-4 md:py-8  w-full dark:bg-black">
+      <div className="py-4 md:py-8 w-full dark:bg-black">
         <Container>
           <div className=" flex items-center justify-center rounded-xl ">
             <div className="px-4 py-2 dark:bg-gray-900 rounded-xl bg-black/10">
               <Carousel className="h-[15rem] md:h-[28rem] w-full rounded-xl" autoplay  >
                 {posts.slice(0, 5).map((randomPost) => (
-                  <Link key={randomPost.$id} to={`/post/${randomPost.$id}`}>
-                    <div className="h-[15rem] md:h-[28rem] relative w-full rounded-xl">
-                      <img
-                        src={appwriteService.getFilePreview(
-                          randomPost.featuredImage
-                        )}
-                        alt={randomPost.title}
-                        className="h-full w-full object-cover rounded-xl "
-                      />
-                      <div className="absolute inset-0 flex items-center pl-16 h-full w-full  bg-black/50 rounded-xl">
-                        <div className="w-full md:w-4/6">
-                          <Typography
-                            variant="h1"
-                            color="white"
-                            className="mb-4 text-xl md:text-5xl lg:text-6xl"
-                          >
-                            {randomPost.title}
-                          </Typography>
-                         
-                          {/* <div className="flex justify-center gap-2">
-                            <Button size="lg" color="white">
-                              Explore
-                            </Button>
-                            <Button size="lg" color="white" variant="text">
-                              Gallery
-                            </Button>
-                          </div> */}
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                  <CarouselComp key={randomPost.$id} {...randomPost} />
                 ))}
               </Carousel>
             </div>
@@ -121,11 +90,12 @@ function Home() {
               .slice()
               .reverse()
               .map((post) => (
-                <div key={post.$id} className="p-2 w-1/2 md:w-1/2 lg:w-1/2  ">
+                <div key={post.$id} className="p-1 w-1/2 md:w-1/2 lg:w-1/2  ">
                   <PostCard {...post} />
                 </div>
               ))}
           </div>
+          <FramerMotion posts={posts}  />
         </Container>
       </div>
     </>

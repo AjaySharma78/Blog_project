@@ -1,8 +1,8 @@
 import React from 'react'
-import pencrefLogo from '../assets/logopen-removebg-preview.png'
-function Logo({width = '100px'}) {
+import pencrefLogo from '../assets/Pencref (4) (1).png'
+function Logo({width = '100px', className=''}) {
   return (
-    <div><img src={pencrefLogo} alt="Logo" width={width}/></div>
+    <div className={`${className}`}><img src={pencrefLogo} alt="Logo" width={width}/></div>
   )
 }
 

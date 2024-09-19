@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config"
-import { Button, Container } from "../components";
+import { Button, Container, Logo } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
 
@@ -32,7 +32,7 @@ export default function Post() {
 
   return post ? (
     <div className="py-8 dark:bg-black">
-      <Container width="w-11/12 bg-black/10 dark:bg-gray-900 p-5 rounded-xl ">
+      <Container width="w-11/12 bg-black/10 dark:bg-blue-gray-900 p-5 rounded-xl ">
         <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
           <div className="w-full">
             <div
@@ -42,12 +42,13 @@ export default function Post() {
                 )})`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-               
                 width: "100%",
               }}
               alt={post.title}
               className="rounded-xl h-48 md:h-[30rem]"
-            ></div>
+            >
+              <Logo width="40px" className=' absolute top-3 md:top-5 left-3 md:left-5 '></Logo>
+            </div>
           </div>
           {isAuthor && (
             <div className="absolute  right-3 bottom-4">

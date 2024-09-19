@@ -57,13 +57,13 @@ function Header() {
       <nav className="md:justify-between md:flex md:items-cente ">
         <div className="flex justify-between md:ml-10">
           <Link to="/">
-            <Logo width='150px md:200px'  />
+            <Logo width='60px'  />
           </Link>
           <span  onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-3xl md:hidden flex items-center">
           {!isMenuOpen? <ion-icon name="menu-outline"></ion-icon>:<ion-icon name="close-outline"></ion-icon>}
           </span>
         </div>
-        <ul className={`md:flex mt-3 md:mt-0 border-t border-black md:border-none md:items-center -z-[-1] dark:bg-black md:dark:bg-transparent bg-white md:bg-transparent transition-all duration-700 ease-in-out md:transition-none sm:shadow-md md:shadow-none left-0 w-full md:z-auto md:static absolute md:w-auto ${ isMenuOpen ? 'top-7 ' : 'top-[-400px]'}`}>
+        <ul className={`md:flex mt-3 md:mt-0 border-t border-black md:border-none md:items-center -z-[-1] dark:bg-black md:dark:bg-transparent bg-white md:bg-transparent transition-all duration-700 ease-in-out md:transition-none sm:shadow-md md:shadow-none left-0 w-full md:z-auto md:static absolute md:w-auto ${ isMenuOpen ? 'top-12 ' : 'top-[-400px]'}`}>
           {navItems.map(
             (item) =>
               item.active && (
