@@ -31,7 +31,7 @@ function FramerMotion({ posts }) {
           <div className=" h-[80vh] md:h-screen bg-white/60 dark:bg-black/70 rounded-2xl ">
             <div className="h-[80vh] md:h-screen w-full overflow-y-hidden ">
               <div className="browser-css overflow-y-auto h-screen  custom-scrollbar">
-                <h1 className="text-2xl  font-bold sticky top-0 p-5 text-black rounded-t-md bg-white dark:bg-black dark:text-white">{randomPost.title}</h1>
+                <h1 className="text-2xl  font-bold sticky top-0 p-5 text-orange-500 rounded-t-md bg-white dark:bg-black">{randomPost.title}</h1>
                 <div className="text-left text-sm md:text-lg px-1 md:px-10 text-black dark:text-gray-300 ">{parse(randomPost.content)}</div>
               </div>
             </div>

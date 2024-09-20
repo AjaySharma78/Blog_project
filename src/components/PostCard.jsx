@@ -23,8 +23,8 @@ function PostCard({$id,$createdAt,$updatedAt, title, featuredImage}) {
                  
             </div>
             <div className='w-full h-14 md:h-10 flex flex-wrap'> 
-            <h2 className='w-full text-sm md:text-lg'>{title}</h2>
-            <h6 className='text-[10px] md:text-xs'>Ceated At : {formattedDate}</h6>
+            <h2 className='w-full text-black dark:text-orange-500 text-sm md:text-lg'>{title}</h2>
+            <h6 className='text-[10px] text-black/50 dark:text-orange-500/50 md:text-xs'>Ceated At : {formattedDate}</h6>
             </div>
         </div>
     </Link>

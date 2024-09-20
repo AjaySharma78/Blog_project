@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { darkTheme, lightTheme } from '../../store/authSlice'
-
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 function Header() {
   const authStatus = useSelector((state) => state.auth.status);
   const themeMode = useSelector((state) => state.auth.theme);
+  const userData = useSelector((state) => state.auth.userData);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -78,10 +80,45 @@ function Header() {
               )
           )}
           {authStatus && (
-            <li className='ml-2'>
-              <LogoutBtn/>
-            </li>
-          )}
+         
+            <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <MenuButton className="inline-flex w-full justify-center gap-x-1.5 ml-2 md:ml-0 rounded-md bg-white dark:bg-black dark:text-white px-3 py-1 text-lg text-black shadow-sm ring-1 ring-inset ring-orange-500 hover:bg-orange-500">
+         {userData.name}
+          <ChevronDownIcon aria-hidden="true" className="-mr-1 h-5 w-5 text-gray-400" />
+        </MenuButton>
+      </div>
+
+      <MenuItems
+        transition
+        className="absolute left-[5.5rem] md:-left-[6rem]  z-10 mt-4 w-56 origin-top-right rounded-md bg-white dark:bg-black dark:text-white transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-100 data-[enter]:ease-out data-[leave]:ease-in"
+      >
+        <div className="py-1">
+          <MenuItem>
+             <LogoutBtn/>
+          </MenuItem>
+          <MenuItem>
+            <Link
+              to="/contact"
+              className="block px-4 py-2 text-sm text-black data-[focus]:bg-orange-500 dark:text-white"
+            >
+              Contact
+            </Link>
+          </MenuItem>
+          <MenuItem>
+              <a
+                href="#"
+                className="block px-4 py-2 text-sm text-black data-[focus]:bg-orange-500 dark:text-white"
+              >
+                License
+              </a>
+
+           
+          </MenuItem>
+        </div>
+      </MenuItems>
+    </Menu>
+   )}
       <div className="sm:rotate-0 md:rotate-90 ml-8 my-2  md:m-0 md:pr-0 ">
         <label className="relative inline-flex items-center cursor-pointer ">
           <input

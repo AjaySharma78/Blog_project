@@ -1,12 +1,30 @@
 import React from "react";
-
+import { Resend } from "resend";
 function Contact() {
+
+  const resend = new Resend('re_adixaFKJ_7hJSU6icfdV7b51g3tEgBBqL');
+  
+  (async function () {
+    const { data, error } = await resend.emails.send({
+      from: 'onboarding@resend.dev',
+      to: 'sharma321santoshi@gmail.com',
+      subject: 'Hello World',
+      html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+    });
+  
+    if (error) {
+      return console.error({ error });
+    }
+  
+    console.log({ data });
+  })();
+  
   return (
     <div className="relative flex items-top justify-center min-h-[400px] dark:bg-black sm:items-center sm:pt-0">
       <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div className="mt-8 overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
-            <div className="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
+            <div className="p-6 mx-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
               <h1 className="text-3xl sm:text-4xl text-gray-800 dark:text-white font-extrabold tracking-tight">
                 Get in touch:
               </h1>
@@ -59,7 +77,7 @@ function Contact() {
                   name="email"
                   id="email"
                   placeholder="Email"
-                  className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-whitefont-semibold focus:border-orange-500 focus:outline-none"
+                  className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-white font-semibold focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
@@ -71,7 +89,7 @@ function Contact() {
                   type="tel"
                   name="tel"
                   id="tel"
-                  placeholder="Telephone Number"
+                  placeholder="Phone Number"
                   className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-white font-semibold focus:border-orange-500 focus:outline-none"
                 />
               </div>

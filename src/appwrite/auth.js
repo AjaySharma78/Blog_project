@@ -34,6 +34,7 @@ export class AuthService {
         }
       } 
 
+
  async verifyEmail(userId, secret) {
     try {
       return await this.account.updateVerification(userId, secret);
@@ -62,8 +63,10 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'github',
-             'https://pencrafted.vercel.app',
-             `https://pencrafted.vercel.app/signup`,
+            //  'https://pencrafted.vercel.app/',
+            //  `https://pencrafted.vercel.app/signup`,
+            'http://localhost:5173/',
+            `http://localhost:5173/signup`,
             );
         } catch (error) {
           throw error;
@@ -74,8 +77,10 @@ export class AuthService {
         try {
           return this.account.createOAuth2Session(
             'google',
-            'https://pencrafted.vercel.app/',
-            `https://pencrafted.vercel.app/signup`,
+            // 'https://pencrafted.vercel.app/',
+            // `https://pencrafted.vercel.app/signup`,
+            'http://localhost:5173/',
+            `http://localhost:5173/signup`,
             );
         } catch (error) {
           throw error;
