@@ -19,8 +19,10 @@ function Contact() {
         html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
       }),
     });
-  
-    console.log( res );
+    if (res.ok) {
+      const data = await res.json();
+      return Response.json(data);
+    }
   })();
   
   return (
