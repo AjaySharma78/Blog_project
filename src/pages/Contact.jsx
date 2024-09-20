@@ -2,21 +2,25 @@ import React from "react";
 import { Resend } from "resend";
 function Contact() {
 
-  const resend = new Resend('re_adixaFKJ_7hJSU6icfdV7b51g3tEgBBqL');
+  const RESEND_API_KEY = new Resend('re_adixaFKJ_7hJSU6icfdV7b51g3tEgBBqL');
   
   (async function () {
-    const { data, error } = await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: 'sharma321santoshi@gmail.com',
-      subject: 'Hello World',
-      html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+  
+    const res = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+      },
+      body: JSON.stringify({
+        from: 'onboarding@resend.dev',
+        to: 'sharma321santoshi@gmail.com',
+        subject: 'Hello World',
+        html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+      }),
     });
   
-    if (error) {
-      return console.error({ error });
-    }
-  
-    console.log({ data });
+    console.log( res );
   })();
   
   return (
