@@ -1,30 +1,6 @@
 import React from "react";
-import { Resend } from "resend";
-function Contact() {
 
-  const RESEND_API_KEY = new Resend('re_adixaFKJ_7hJSU6icfdV7b51g3tEgBBqL');
-  
-  (async function () {
-  
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-      },
-      body: JSON.stringify({
-        from: 'onboarding@resend.dev',
-        to: 'sharma321santoshi@gmail.com',
-        subject: 'Hello World',
-        html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
-      }),
-    });
-    if (res.ok) {
-      const data = await res.json();
-      return Response.json(data);
-    }
-  })();
-  
+function Contact() {
   return (
     <div className="relative flex items-top justify-center min-h-[400px] dark:bg-black sm:items-center sm:pt-0">
       <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
