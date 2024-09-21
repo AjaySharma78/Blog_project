@@ -11,7 +11,7 @@ import ResetPassword from "./ResetPassword";
 import Error from "./Error";
 import TermsCondition from "./TermsCondition";
 import Contact from "./Contact";
-
+import Mail from "./Mail";
 
 export {
     AddPost,
@@ -26,5 +26,7 @@ export {
     ResetPassword,
     Error,
     TermsCondition,
-    Contact
+    Contact,
+    Mail
+
 }

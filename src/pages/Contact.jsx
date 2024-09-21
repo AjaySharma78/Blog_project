@@ -1,6 +1,34 @@
 import React from "react";
-
+import emailjs from "emailjs-com";
 function Contact() {
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    emailjs.sendForm('Pencrafted_service_4gqcl', 'template_9lo6tqb', e.target, 'KMyDL88Bqd-ylBD3x')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+  };
+
   return (
     <div className="relative flex items-top justify-center min-h-[400px] dark:bg-black sm:items-center sm:pt-0">
       <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
@@ -36,15 +64,16 @@ function Contact() {
               </div>
             </div>
 
-            <form className="p-6 flex flex-col justify-center">
+            <form onSubmit={handleSubmit} className="p-6 flex flex-col justify-center">
               <div className="flex flex-col">
                 <label htmlFor="name" className="hidden">
                   Full Name
                 </label>
                 <input
                   type="name"
-                  name="name"
+                  name="to_name"
                   id="name"
+                  onChange={handleChange}
                   placeholder="Full Name"
                   className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-white font-semibold focus:border-orange-500 focus:outline-none"
                 />
@@ -56,14 +85,15 @@ function Contact() {
                 </label>
                 <input
                   type="email"
-                  name="email"
+                  name="reply_to"
                   id="email"
+                  onChange={handleChange}
                   placeholder="Email"
                   className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-white font-semibold focus:border-orange-500 focus:outline-none"
                 />
               </div>
 
-              <div className="flex flex-col mt-2">
+              {/* <div className="flex flex-col mt-2">
                 <label htmlFor="tel" className="hidden">
                   Number
                 </label>
@@ -74,7 +104,7 @@ function Contact() {
                   placeholder="Phone Number"
                   className="w-100 mt-2 py-3 px-3 rounded-lg dark:bg-black border border-gray-400 text-gray-800 dark:text-white font-semibold focus:border-orange-500 focus:outline-none"
                 />
-              </div>
+              </div> */}
 
               <button
                 type="submit"
