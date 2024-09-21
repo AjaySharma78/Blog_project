@@ -7,7 +7,7 @@ import store from './store/store.js'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { AuthLayout} from './components/index.js'
 import { ThemeProvider } from '@material-tailwind/react'
-import { Home, Login, Signup, AllPosts, AddPost, EditPost, Post, Verify, TermsCondition, Contact, ResetPasswordMail, ResetPassword, Error, Mail } from './pages/index.js'
+import { Home, Login, Signup, AllPosts, AddPost, EditPost, Post, Verify, TermsCondition, Contact, ResetPasswordMail, ResetPassword, Error } from './pages/index.js'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,10 +84,6 @@ const router = createBrowserRouter([
          {
          path:"/reset-password-page",
         element:<ResetPassword/>
-         },
-         {
-          path:"/mail",
-            element:<Mail/>
          },
         {
             path: "*",
