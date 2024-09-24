@@ -78,7 +78,7 @@ function Home() {
         <Container>
           <div className=" flex items-center justify-center rounded-xl ">
             <div className="px-2 py-2 dark:bg-gray-900 rounded-xl bg-black/10">
-              <Carousel className="h-[15rem] md:h-[28rem] w-full rounded-xl" autoplay  >
+              <Carousel className="h-[15rem] md:h-[28rem] w-full rounded-xl" autoplay loop >
                 {posts.slice(0, 5).map((randomPost) => (
                   <CarouselComp key={randomPost.$id} {...randomPost} />
                 ))}
