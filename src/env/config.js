@@ -6,5 +6,6 @@ const config = {
     appwriteBucketId: String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
     tinyMCEKey: String(import.meta.env.VITE_TINYMCE_ID),
     oauthEndpoint: String(import.meta.env.VITE_OAUTH2_ENDPOINT),
+
 }
 export default config
